@@ -1,5 +1,68 @@
+## brief description of all routes in the backend system
 
-**Frontend - **
+### Profile Management
+- `POST /update_profile`: Updates the user's profile information, including email, first name, last name, and profile picture.
+
+### Login and Authentication Checks
+- `GET /checkLogged`: Checks if a user is logged in. Returns a 405 status with the message "Not Logged" if the user is not logged in.
+- `GET /checkUserLogged`: Checks if a user is logged in. Returns a 405 status with the message "Not Logged User" if the user is not logged in.
+
+### User Signup and Registration
+- `POST /signup`: Handles user signup. Checks if the user is already logged in, verifies the email if using OAuth, and creates a new user. Sends a verification email if successful.
+- `GET /checkPending`: Checks the status of a pending user signup using the user's ID.
+- `PUT /signup-finish`: Completes the signup process for a pending user registration.
+
+### User Login
+- `GET /login`: Handles user login by verifying the user's credentials or OAuth token. Returns user data if successful.
+
+### Password Reset
+- `POST /forgot-request`: Initiates a password reset request by generating a secret and sending a password reset email to the user.
+- `GET /forgot-check`: Checks if the password reset request is valid using the user's ID and secret.
+- `PUT /forgot-finish`: Completes the password reset process by updating the user's password.
+
+### Account Management
+- `DELETE /account`: Deletes the user's account if the user is logged in.
+
+### OTP (One-Time Password) Operations
+- `POST /otp`: Sends an OTP to the user's email for verification purposes.
+- `POST /send_otp`: Sends an OTP to the user's email and stores it in the database for later verification.
+
+### Welcome Message
+- `GET /`: Displays a welcome message.
+
+### File Management
+- `GET /upload`: Retrieve information about a file for a specific chat.
+- `POST /upload`: Upload a file to OpenAI and store its details.
+- `POST /getfile`: Retrieve file information for a specific chat.
+- `POST /deletefile`: Delete a specific file from a chat.
+
+### Chat Operations
+- `POST /`: Send a prompt to OpenAI and store the response.
+- `PUT /`: Update a chat with a new prompt and retrieve the updated response.
+
+### User Data Retrieval
+- `GET /saved`: Retrieve saved chat data for a user.
+- `GET /history`: Retrieve chat history for a user.
+
+### Data Deletion
+- `DELETE /all`: Delete all chat data for a user.
+
+
+
+## How to run the app:
+
+1. Ensure npm is Installed:
+	Before starting, make sure that npm (Node Package Manager) is installed on your 	system.
+2. Running the Server:
+	Navigate to the server directory within the application's root folder using a command 	line tool.
+	Execute the command npm start. 
+3. Running the Client:
+	Open a new command line interface.Navigate to the directory.
+	Execute the command npm run dev.
+
+
+
+## **Frontend - **
 
 <span style="text-decoration:underline;">Tech Stacks - </span>
 
@@ -62,6 +125,7 @@ Documentation -
 * <span style="text-decoration:underline;">docker-compose.yml</span> - This Docker Compose file defines two services: "server" and "client". Each service builds from its respective Dockerfile, exposes ports, and establishes communication links between them. The "client" service maps port 80, while "server" maps port 5000, facilitating communication between the two services.
 * <span style="text-decoration:underline;">S3 Bucket</span> - Used to store the profile picture uploaded by the user so that it can be easily displayed on the interface.
 * <span style="text-decoration:underline;">EC2</span> - Running the Dockerfile on an EC2 instance allows you to deploy and manage your application in a scalable and flexible environment. EC2 instances provide virtual servers in the cloud, enabling you to host and run your Docker containers with ease. By using EC2, you can take advantage of its scalability, reliability, and cost-effectiveness for hosting your Dockerized application. The Public IP of the EC2 instance is [3.145.122.144](http://3.145.122.144) .
+
 
 
 
